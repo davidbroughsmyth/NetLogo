@@ -14,7 +14,11 @@ class SliderData(errorHandler: MultiErrorHandler, var minimum:Double = 0, var ma
   def value_=(value: Double, buttonRelease: Boolean) {valueSetter(value)}
   def valueSetter(v: Double): Boolean = {
     if (v!=_value) {
-      this._value = v
+      if ( v >= minimum && v <= maximum ) {
+        this._value = v
+      } else {
+        this._value = minimum
+      }
       true
     } else false
   }
