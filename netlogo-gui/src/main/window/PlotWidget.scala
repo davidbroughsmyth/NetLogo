@@ -32,6 +32,10 @@ class PlotWidget(plot:Plot, plotManager: PlotManagerInterface) extends AbstractP
 
   def handle(e: PeriodicUpdateEvent){ repaintIfNeeded() }
 
+  override def reAdd() : Unit = {
+    plotManager.addPlot(plot)
+  }
+
   override def hasContextMenu = true
   override def exportable = true
   override def getDefaultExportName = plotName + ".csv"
